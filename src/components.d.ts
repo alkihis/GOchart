@@ -12,40 +12,43 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface MyComponent {
+  interface GoChart {
+    'data': object[];
     'first': string;
     'last': string;
     'middle': string;
   }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
+  interface GoChartAttributes extends StencilHTMLAttributes {
+    'data'?: object[];
     'first'?: string;
     'last'?: string;
     'middle'?: string;
+    'onGoSelectEvent'?: (event: CustomEvent) => void;
   }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
+    'GoChart': Components.GoChart;
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
+    'go-chart': Components.GoChartAttributes;
   }
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLGoChartElement extends Components.GoChart, HTMLStencilElement {}
+  var HTMLGoChartElement: {
+    prototype: HTMLGoChartElement;
+    new (): HTMLGoChartElement;
   };
 
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
+    'go-chart': HTMLGoChartElement
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'go-chart': HTMLGoChartElement;
   }
 
 

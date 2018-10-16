@@ -1,7 +1,7 @@
 {
-  "name": "my-component",
+  "name": "go-chart",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Stencil GO bar chart",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",
@@ -15,18 +15,22 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/d3": "^5.0.0",
+    "d3": "^5.7.0",
+    "qwest": "^4.5.0"
+  },
   "devDependencies": {
     "@stencil/core": "~0.13.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "git+https://github.com/glaunay/GOchart.git"
   },
   "author": "Ionic Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
+    "url": "https://github.com/glaunay/GOchart"
   },
-  "homepage": "https://github.com/ionic-team/stencil"
+  "homepage": "https://github.com/glaunay/GOchart"
 }
