@@ -13,6 +13,7 @@ import '@stencil/core';
 export namespace Components {
 
   interface GoChart {
+    'clearSelection': () => void;
     'data': object[];
     'first': string;
     'last': string;

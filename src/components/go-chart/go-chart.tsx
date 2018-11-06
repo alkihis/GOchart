@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element, Event, EventEmitter } from '@stencil/core';
+import { Component, Prop, Watch, Element, Event, EventEmitter, Method } from '@stencil/core';
 import * as d3 from "d3";
 
 
@@ -24,6 +24,15 @@ export class GOchart {
   outerWidth : number;
   svg: any;
 
+  @Method()
+  clearSelection() {
+    this.svg.selectAll(".bar")
+    .each(function(d) {
+      //let barStatus =  d3.select(this).classed("active") ? false : true;
+      d3.select(this).classed("active", false);
+    });
+
+  }
   @Watch('data')
   buildChart(newData: object[]/*, oldData: undefined|object*/){
 
