@@ -5,7 +5,7 @@ div.frame {
     max-height: 200px;    
     overflow: scroll;
     background: whitesmoke;
-    padding:0 0 0 0;
+    padding: 0;
     border : solid silver 1px;
     max-width:500px;
     border-radius: 9px;
@@ -24,7 +24,6 @@ div.tooltip {
     border : solid silver 1px;
     border-radius: 9px;
     margin-top: 0.5em;
-    margin-left:10%;
-    opacity: 0;
-    padding:0.5em;
+    margin-left: 10%;
+    padding: 0.5em;
 }

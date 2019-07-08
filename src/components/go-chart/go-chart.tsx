@@ -173,7 +173,7 @@ export class GOchart {
         <div class="frame">
           <svg/>
         </div>
-        <div class="tooltip"/>
+        <div class="tooltip" style={{"display": "none"}}/>
       </div>
     );
   }
