@@ -5,37 +5,20 @@
  */
 
 
-import '@stencil/core';
-
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+import {
+  GOChartData,
+} from './utils';
 
 export namespace Components {
-
   interface GoChart {
-    'clearSelection': () => void;
-    'data': object[];
-    'first': string;
-    'last': string;
-    'middle': string;
-  }
-  interface GoChartAttributes extends StencilHTMLAttributes {
-    'data'?: object[];
-    'first'?: string;
-    'last'?: string;
-    'middle'?: string;
-    'onGoSelectEvent'?: (event: CustomEvent) => void;
+    'clearSelection': () => Promise<void>;
+    'data': GOChartData[];
+    'selected': () => Promise<GOChartData[]>;
   }
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'GoChart': Components.GoChart;
-  }
-
-  interface StencilIntrinsicElements {
-    'go-chart': Components.GoChartAttributes;
-  }
 
 
   interface HTMLGoChartElement extends Components.GoChart, HTMLStencilElement {}
@@ -43,22 +26,29 @@ declare global {
     prototype: HTMLGoChartElement;
     new (): HTMLGoChartElement;
   };
-
   interface HTMLElementTagNameMap {
-    'go-chart': HTMLGoChartElement
-  }
-
-  interface ElementTagNameMap {
     'go-chart': HTMLGoChartElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface GoChart extends JSXBase.HTMLAttributes<HTMLGoChartElement> {
+    'data'?: GOChartData[];
+    'onGo-chart.select'?: (event: CustomEvent<{ status: boolean, id: string, selected: GOChartData[] }>) => void;
+  }
+
+  interface IntrinsicElements {
+    'go-chart': GoChart;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

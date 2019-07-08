@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
   <!-- <script src="/assets/main.js"></script> -->
-  <script src="/build/go-chart.js"></script>
+  <script type="module" src="/build/go-chart.esm.js"></script>
+  <script nomodule src="/build/go-chart.js"></script>
   <script>
   window.onload = function () {
     
-    document.addEventListener("goSelectEvent", function(d){
+    document.addEventListener("go-chart.select", function(d){
       console.log("clicked");
       console.dir(d.detail);
     });
@@ -38,7 +39,7 @@
         }
         console.log(GOdata);
         console.log(Object.keys(GOdata).map(k => GOdata[k] ));
-        _gochart.data = Object.keys(GOdata).map(k => GOdata[k] );
+        _gochart.data = Object.values(GOdata)
       }
 };
 xhttp.open("GET", "assets/interactome_60_enriched.json", true);
@@ -50,7 +51,7 @@ xhttp.send();
 </head>
 <body>
 
-  <go-chart id="gochart" first="Stencil" last="'Don't call me a framework' JS"></go-chart>
+  <go-chart id="gochart"></go-chart>
 
 </body>
 </html>
