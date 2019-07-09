@@ -12,12 +12,6 @@ div.frame {
 
 }
 
-div.window {
-    position:absolute;
-    right : 5px;
-    top:10px;
-}
-
 div.tooltip {
     max-width:400px;
     background: whitesmoke;
