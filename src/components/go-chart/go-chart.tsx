@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, Element, Event, EventEmitter, Method, h } from '@stencil/core';
+import { Component, Prop, Watch, Element, Event, EventEmitter, Method, h, Listen } from '@stencil/core';
 import * as d3 from "d3";
 import { GOChartData } from '../../utils';
 
@@ -19,6 +19,7 @@ export class GOchart {
   outerWidth : number; 
   svg: d3.Selection<SVGSVGElement, GOChartData, null, undefined>; 
 
+  @Listen('omega-prune.unselect-all', { target: 'window' })
   @Method()
   clearSelection() {
     this.svg.selectAll(".bar")
