@@ -34,6 +34,8 @@ declare global {
 declare namespace LocalJSX {
   interface GoChart extends JSXBase.HTMLAttributes<HTMLGoChartElement> {
     'data'?: GOChartData[];
+    'onGo-chart.hoveroff'?: (event: CustomEvent<void>) => void;
+    'onGo-chart.hoveron'?: (event: CustomEvent<{ selected: GOChartData[] }>) => void;
     'onGo-chart.select'?: (event: CustomEvent<{ status: boolean, id: string, selected: GOChartData[] }>) => void;
   }
 

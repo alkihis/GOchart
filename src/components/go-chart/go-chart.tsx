@@ -16,6 +16,14 @@ export class GOchart {
     eventName: 'go-chart.select'
   }) goSelectEvent: EventEmitter<{ status: boolean, id: string, selected: GOChartData[] }>; 
 
+  @Event({
+    eventName: 'go-chart.hoveron'
+  }) hoverOn: EventEmitter<{ selected: GOChartData[] }>; 
+
+  @Event({
+    eventName: 'go-chart.hoveroff'
+  }) hoverOff: EventEmitter<void>; 
+
   outerWidth : number; 
   svg: d3.Selection<SVGSVGElement, GOChartData, null, undefined>; 
 
@@ -115,6 +123,12 @@ export class GOchart {
         const barStatus =  d3.select(this).classed("active") ? false : true;
         d3.select(this).classed("active", barStatus);
         self.goSelectEvent.emit({'status': barStatus, 'id' : d.id, 'selected': self._selected()});
+      })
+      .on('mouseover', () => {
+        self.hoverOn.emit({'selected': self._selected()});
+      })
+      .on("mouseout", () => {
+        self.hoverOff.emit();
       });
     
     
