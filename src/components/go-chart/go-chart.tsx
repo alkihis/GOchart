@@ -17,11 +17,11 @@ export class GOchart {
   }) goSelectEvent: EventEmitter<{ status: boolean, id: string, selected: GOChartData[] }>; 
 
   @Event({
-    eventName: 'go-chart.hoveron'
-  }) hoverOn: EventEmitter<{ selected: GOChartData[] }>; 
+    eventName: 'go-chart.hover-on'
+  }) hoverOn: EventEmitter<string[]>; 
 
   @Event({
-    eventName: 'go-chart.hoveroff'
+    eventName: 'go-chart.hover-off'
   }) hoverOff: EventEmitter<void>; 
 
   outerWidth : number; 
@@ -125,7 +125,7 @@ export class GOchart {
         self.goSelectEvent.emit({'status': barStatus, 'id' : d.id, 'selected': self._selected()});
       })
       .on('mouseover', () => {
-        self.hoverOn.emit({'selected': self._selected()});
+        self.hoverOn.emit(self._selected().map(e => e.id));
       })
       .on("mouseout", () => {
         self.hoverOff.emit();
