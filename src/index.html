@@ -15,6 +15,15 @@
       console.dir(d.detail);
     });
 
+    document.addEventListener("go-chart.hover-on", function(d){
+      console.log("hover");
+      console.dir(d.detail);
+    });
+
+    document.addEventListener("go-chart.hover-off", function(d){
+      console.log("hoveroff");
+    });
+
      _gochart = document.getElementById("gochart");
     let xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {

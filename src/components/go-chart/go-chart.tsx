@@ -124,8 +124,8 @@ export class GOchart {
         d3.select(this).classed("active", barStatus);
         self.goSelectEvent.emit({'status': barStatus, 'id' : d.id, 'selected': self._selected()});
       })
-      .on('mouseover', () => {
-        self.hoverOn.emit(self._selected().map(e => e.id));
+      .on('mouseover', (d) => {
+        self.hoverOn.emit([d.id]);
       })
       .on("mouseout", () => {
         self.hoverOff.emit();
